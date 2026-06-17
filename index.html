@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -7,7 +7,7 @@
         body { font-family: 'Inter', sans-serif; background: #f0f4f8; display: flex; padding: 40px; margin: 0; }
         
         /* Sidebar Styling */
-        .sidebar { width: 100px; display: flex; flex-direction: column; gap: 30px; align-items: center; }
+        .sidebar { width: 100px; display: flex; flex-direction: column; gap: 30px; align-items: center; position: fixed; }
         .icon { 
             background: white; padding: 20px; border-radius: 25px; cursor: pointer; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; 
@@ -16,8 +16,11 @@
         .icon:hover { transform: scale(1.1); background: #e0e7ff; color: #4f46e5; }
 
         /* Main Content */
-        .main-content { flex: 1; background: #ffffff; border-radius: 40px; padding: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .main-content { margin-left: 140px; flex: 1; background: #ffffff; border-radius: 40px; padding: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         
+        /* Section styling agar ada jarak untuk scroll */
+        section { min-height: 80vh; padding-top: 20px; }
+
         .bubble { 
             padding: 20px 30px; border-radius: 30px; display: inline-block; margin: 10px; 
             border: 1px solid #e5e7eb; font-weight: 500;
@@ -37,20 +40,26 @@
     <a href="#achievements" class="icon">🏆</a>
 </div>
 
-<div class="main-content" id="home">
-    <h1>Personal Roadmap 24 - 30</h1>
-    
-    <div class="bubble green"><strong>SEKARANG: 24</strong><br>IM HERE</div>
-    <div class="bubble blue"><strong>2026-2027</strong><br>Fasih Inggris C1-C2</div>
-    <div class="bubble"><strong>2028</strong><br>Fasih Mandarin HSK 5</div>
+<div class="main-content">
+    <section id="home">
+        <h1>Personal Roadmap 24 - 30</h1>
+        <div class="bubble green"><strong>SEKARANG: 24</strong><br>IM HERE</div>
+        <div class="bubble blue"><strong>2026-2027</strong><br>Fasih Inggris C1-C2</div>
+        <div class="bubble"><strong>2028</strong><br>Fasih Mandarin HSK 5</div>
+    </section>
 
-    <div class="achievements-box" id="achievements">
+    <section id="progress">
+        <h2>Progress Tracking</h2>
+        <p>Detail progress bahasa dan studi akan ditampilkan di sini.</p>
+    </section>
+
+    <section id="achievements" class="achievements-box">
         <h3>🎯 Achievements at 29 / 30</h3>
         <div class="goal-item">Sarjana Komputer</div>
         <div class="goal-item">Fasih Inggris & Mandarin</div>
         <div class="goal-item">Pengalaman Luar Negeri (Armenia/Aussie)</div>
         <div class="goal-item">Keuangan & Paspor Beres</div>
-    </div>
+    </section>
 </div>
 
 </body>
