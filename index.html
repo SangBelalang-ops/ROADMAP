@@ -1,65 +1,357 @@
 <!DOCTYPE html>
-<html lang="id" style="scroll-behavior: smooth;">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Roadmap 24's - 30 (Dashboard)</title>
     <style>
-        body { font-family: 'Inter', sans-serif; background: #f0f4f8; display: flex; padding: 40px; margin: 0; }
-        
-        /* Sidebar Styling */
-        .sidebar { width: 100px; display: flex; flex-direction: column; gap: 30px; align-items: center; position: fixed; }
-        .icon { 
-            background: white; padding: 20px; border-radius: 25px; cursor: pointer; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; 
-            text-decoration: none; color: #333; font-size: 24px;
-        }
-        .icon:hover { transform: scale(1.1); background: #e0e7ff; color: #4f46e5; }
+        /*
+          This CSS aims to replicate the visual layout and bubbly style of the dashboard.
+          A 100% pixel-perfect match is incredibly difficult across different browsers, 
+          but this code is a very close functional recreation.
+        */
 
-        /* Main Content */
-        .main-content { margin-left: 140px; flex: 1; background: #ffffff; border-radius: 40px; padding: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        
-        /* Section styling agar ada jarak untuk scroll */
-        section { min-height: 80vh; padding-top: 20px; }
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap');
 
-        .bubble { 
-            padding: 20px 30px; border-radius: 30px; display: inline-block; margin: 10px; 
-            border: 1px solid #e5e7eb; font-weight: 500;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f6f0ff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        .green { background: #dcfce7; border-color: #22c55e; color: #166534; }
-        .blue { background: #dbeafe; border-color: #3b82f6; color: #1e40af; }
-        
-        .achievements-box { background: #f9fafb; padding: 30px; border-radius: 30px; margin-top: 30px; }
-        .goal-item { background: white; padding: 18px; margin: 10px 0; border-radius: 20px; border: 1px solid #e5e7eb; }
+
+        .dashboard-container {
+            width: 1300px;
+            height: 700px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Top Bar */
+        .top-banner {
+            background-color: #c8bdfc;
+            color: #3e3e3e;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            padding: 15px 0;
+            border-bottom: 1px solid #a89eff;
+        }
+
+        /* Main Content Area */
+        .content-area {
+            display: flex;
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 120px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            padding-right: 20px;
+            border-right: 1px solid #eee;
+        }
+
+        .sidebar-item {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #fcf8ff;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .sidebar-item:hover {
+            background-color: #f3e5ff;
+        }
+
+        .sidebar-icon {
+            font-size: 30px;
+            color: #ccc;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Central Timeline & Milestones */
+        .timeline-section {
+            flex: 2;
+            padding: 0 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .goals-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        .goal-bubble {
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .start-bubble {
+            width: 170px;
+            height: 170px;
+            background: linear-gradient(135deg, #d8ffd8, #b0ffb0);
+            border: 2px solid #90ee90;
+        }
+
+        .target-bubble-pink {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #ffe0f0, #ffd0e0);
+            border: 2px solid #ffb6c1;
+        }
+
+        .target-bubble-blue {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #e0f0ff, #d0e0ff);
+            border: 2px solid #add8e6;
+        }
+
+        .bubble-time-large {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .bubble-goal-text {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin: 5px 0;
+        }
+
+        .bubble-tag {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            position: absolute;
+            bottom: -10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        .start-bubble .bubble-tag { background-color: #333; color: white; padding: 10px; font-size: 14px; bottom: 30px; position: static; box-shadow: none; }
+        .start-bubble { font-size: 18px; color: #333; }
+        .start-bubble strong { font-size: 20px; color: #333; }
+
+        .target-bubble-pink .bubble-tag { background-color: #cceeff; color: #333; }
+        .target-bubble-blue .bubble-tag { background-color: #ffeecc; color: #333; }
+
+        /* Timeline Years Bar */
+        .timeline-bar {
+            background-color: #e6f0fa;
+            border-radius: 10px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-year-group {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .timeline-year-number { font-size: 14px; color: #777; margin-right: 5px; }
+
+        /* Completed Milestones (below timeline) */
+        .milestones-underbar {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-left: 100px; /* Offset to align */
+        }
+
+        .milestone-bar {
+            background-color: #ffd0c0; /* default gold/tan */
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .armenia-bar { background-color: #ffdb99; align-self: flex-start; margin-left: 20px; }
+        .aussie-bar { background-color: #ffdab9; align-self: flex-start; margin-left: 140px; }
+        .skom-bar { background-color: #ffe4b5; align-self: flex-start; margin-left: 240px; }
+
+        /* Achievement Section */
+        .achievement-section {
+            flex: 1;
+            padding: 0 20px;
+            border-left: 1px solid #eee;
+        }
+
+        .achievement-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .achievement-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .achievement-item {
+            background-color: #f4e8ff;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            border: 1px solid #e0c8ff;
+        }
+
+        .finish-button {
+            margin-top: 30px;
+            background-color: #a8ffa8;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            border: 2px solid #90ee90;
+            transition: background 0.3s;
+        }
+
+        .finish-button:hover {
+            background-color: #c1ffc1;
+        }
+
+        /* Profile Icon (Top Right) */
+        .profile-bubble {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #b0c4de;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+        }
+
     </style>
 </head>
 <body>
 
-<div class="sidebar">
-    <a href="#home" class="icon">🏠</a>
-    <a href="#progress" class="icon">📈</a>
-    <a href="#achievements" class="icon">🏆</a>
-</div>
+<div class="dashboard-container">
+    <div class="top-banner">PERSONAL ROADMAP 24's - 30 (DASHBOARD)</div>
+    <div class="profile-bubble">👤</div>
 
-<div class="main-content">
-    <section id="home">
-        <h1>Personal Roadmap 24 - 30</h1>
-        <div class="bubble green"><strong>SEKARANG: 24</strong><br>IM HERE</div>
-        <div class="bubble blue"><strong>2026-2027</strong><br>Fasih Inggris C1-C2</div>
-        <div class="bubble"><strong>2028</strong><br>Fasih Mandarin HSK 5</div>
-    </section>
+    <div class="content-area">
+        <div class="sidebar">
+            <div class="sidebar-item">
+                <div class="sidebar-icon">💬</div>
+                <div class="sidebar-label">OVERVIEW</div>
+            </div>
+            <div class="sidebar-item">
+                <div class="sidebar-icon">📈</div>
+                <div class="sidebar-label">GOALS TRACKER</div>
+            </div>
+            <div class="sidebar-item">
+                <div class="sidebar-icon">🏳️</div>
+                <div class="sidebar-label">MILESTONES</div>
+            </div>
+            <div class="sidebar-item">
+                <div class="sidebar-icon">🏆</div>
+                <div class="sidebar-label">ACHIEVEMENTS</div>
+            </div>
+        </div>
 
-    <section id="progress">
-        <h2>Progress Tracking</h2>
-        <p>Detail progress bahasa dan studi akan ditampilkan di sini.</p>
-    </section>
+        <div class="timeline-section">
+            <div class="goals-row">
+                <div class="goal-bubble start-bubble">
+                    <div class="bubble-tag">SEKARANG: 24</div>
+                    <div><strong>IM HERE</strong></div>
+                </div>
+                <div class="goal-bubble target-bubble-pink">
+                    <div class="bubble-time-large">TARGET 2026-2027</div>
+                    <div class="bubble-goal-text">FASIH INGGRIS C1 - C2</div>
+                    <div class="bubble-tag">PROCCESING NOW</div>
+                </div>
+                <div class="goal-bubble target-bubble-blue">
+                    <div class="bubble-time-large">TARGET 2028</div>
+                    <div class="bubble-goal-text">FASIH MANDARIN HSK 5</div>
+                    <div class="bubble-tag">COMING SOON</div>
+                </div>
+            </div>
 
-    <section id="achievements" class="achievements-box">
-        <h3>🎯 Achievements at 29 / 30</h3>
-        <div class="goal-item">Sarjana Komputer</div>
-        <div class="goal-item">Fasih Inggris & Mandarin</div>
-        <div class="goal-item">Pengalaman Luar Negeri (Armenia/Aussie)</div>
-        <div class="goal-item">Keuangan & Paspor Beres</div>
-    </section>
+            <div class="timeline-bar">
+                <div class="timeline-year-group"><span class="timeline-year-number">25</span> 2026</div>
+                <div class="timeline-year-group"><span class="timeline-year-number">26</span> 2027</div>
+                <div class="timeline-year-group"><span class="timeline-year-number">27</span> 2028</div>
+                <div class="timeline-year-group"><span class="timeline-year-number">28</span> 2029</div>
+                <div class="timeline-year-group"><span class="timeline-year-number">29</span> 2030</div>
+            </div>
+
+            <div class="milestones-underbar">
+                <div class="milestone-bar armenia-bar">ARMENIA DONE</div>
+                <div class="milestone-bar aussie-bar">WHV AUSSIE</div>
+                <div class="milestone-bar skom-bar">S.KOM / S1</div>
+            </div>
+        </div>
+
+        <div class="achievement-section">
+            <div class="achievement-title">ACHIEVEMENTS AT 29 / 30</div>
+            <div class="achievement-list">
+                <div class="achievement-item">SARJANA KOMPUTER</div>
+                <div class="achievement-item">FASIH INGGRIS</div>
+                <div class="achievement-item">FASIH INGGRIS & MANDARIN</div>
+                <div class="achievement-item">LEBIH BIJAK, KAYA & BERPENGALAMAN</div>
+                <div class="achievement-item">PASPOR BERES</div>
+            </div>
+            <div class="finish-button">FINISH</div>
+        </div>
+    </div>
 </div>
 
 </body>
