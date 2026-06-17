@@ -2,53 +2,52 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <title>My Roadmap Dashboard</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; display: flex; }
-        /* Sidebar Menu */
-        nav { width: 200px; background: #2c3e50; height: 100vh; color: white; padding: 20px; }
-        nav h2 { font-size: 1.2rem; }
-        nav ul { list-style: none; padding: 0; }
-        nav li { padding: 10px 0; cursor: pointer; border-bottom: 1px solid #3e5871; }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
         
-        /* Konten Utama */
-        main { flex: 1; padding: 30px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); }
-        .status { font-size: 0.8rem; font-weight: bold; color: #e67e22; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            min-height: 100vh; display: flex; padding: 20px; color: #333;
+        }
+
+        .sidebar { width: 80px; display: flex; flex-direction: column; gap: 20px; align-items: center; }
+        .icon { background: rgba(255,255,255,0.6); padding: 15px; border-radius: 20px; cursor: pointer; backdrop-filter: blur(10px); }
+
+        .main-content { flex: 1; background: rgba(255,255,255,0.4); border-radius: 40px; padding: 40px; backdrop-filter: blur(20px); border: 2px solid rgba(255,255,255,0.3); }
+        
+        .bubble { background: white; padding: 25px; border-radius: 50px; display: inline-block; margin: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border: 2px solid #fff; }
+        .bubble.green { background: #d4edda; border-color: #28a745; }
+        .bubble.blue { background: #d1ecf1; border-color: #17a2b8; }
+        
+        .achievements-box { background: rgba(255,255,255,0.5); padding: 30px; border-radius: 30px; margin-top: 20px; }
+        .goal-item { background: white; padding: 15px; margin: 10px 0; border-radius: 20px; text-align: center; font-weight: 600; }
     </style>
 </head>
 <body>
 
-<nav>
-    <h2>Roadmap 24-30</h2>
-    <ul>
-        <li>Dashboard</li>
-        <li>Progress</li>
-        <li>Pencapaian</li>
-    </ul>
-</nav>
+<div class="sidebar">
+    <div class="icon">🏠</div>
+    <div class="icon">📈</div>
+    <div class="icon">🏆</div>
+</div>
 
-<main>
-    <h1>Selamat Datang di Perjalanan Anda</h1>
-    <div class="grid">
-        <div class="card">
-            <h3>Usia 24 (Sekarang)</h3>
-            <p>Start Point</p>
-            <span class="status">● AKTIF</span>
-        </div>
-        <div class="card">
-            <h3>Usia 25-26</h3>
-            <p>Fasih Inggris C1-C2</p>
-            <input type="checkbox"> Proses Sekarang
-        </div>
-        <div class="card">
-            <h3>Usia 27-28</h3>
-            <p>Fasih Mandarin HSK 5</p>
-            <span class="status">COMING SOON</span>
-        </div>
+<div class="main-content">
+    <h1>Personal Roadmap (24 - 30)</h1>
+    
+    <div class="bubble green"><strong>SEKARANG: 24</strong><br>IM HERE</div>
+    <div class="bubble blue"><strong>2026-2027</strong><br>Fasih Inggris C1-C2</div>
+    <div class="bubble"><strong>2028</strong><br>Fasih Mandarin HSK 5</div>
+
+    <div class="achievements-box">
+        <h3>🎯 Achievements at 29 / 30</h3>
+        <div class="goal-item">Sarjana Komputer</div>
+        <div class="goal-item">Fasih Inggris & Mandarin</div>
+        <div class="goal-item">Pengalaman Luar Negeri (Armenia/Aussie)</div>
+        <div class="goal-item">Keuangan & Paspor Beres</div>
     </div>
-</main>
+</div>
 
 </body>
 </html>
