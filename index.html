@@ -2,45 +2,49 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>My Roadmap Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body { font-family: 'Inter', sans-serif; background: #f0f4f8; display: flex; padding: 40px; margin: 0; }
         
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-            min-height: 100vh; display: flex; padding: 20px; color: #333;
+        /* Sidebar Styling */
+        .sidebar { width: 100px; display: flex; flex-direction: column; gap: 30px; align-items: center; }
+        .icon { 
+            background: white; padding: 20px; border-radius: 25px; cursor: pointer; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; 
+            text-decoration: none; color: #333; font-size: 24px;
         }
+        .icon:hover { transform: scale(1.1); background: #e0e7ff; color: #4f46e5; }
 
-        .sidebar { width: 80px; display: flex; flex-direction: column; gap: 20px; align-items: center; }
-        .icon { background: rgba(255,255,255,0.6); padding: 15px; border-radius: 20px; cursor: pointer; backdrop-filter: blur(10px); }
-
-        .main-content { flex: 1; background: rgba(255,255,255,0.4); border-radius: 40px; padding: 40px; backdrop-filter: blur(20px); border: 2px solid rgba(255,255,255,0.3); }
+        /* Main Content */
+        .main-content { flex: 1; background: #ffffff; border-radius: 40px; padding: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         
-        .bubble { background: white; padding: 25px; border-radius: 50px; display: inline-block; margin: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border: 2px solid #fff; }
-        .bubble.green { background: #d4edda; border-color: #28a745; }
-        .bubble.blue { background: #d1ecf1; border-color: #17a2b8; }
+        .bubble { 
+            padding: 20px 30px; border-radius: 30px; display: inline-block; margin: 10px; 
+            border: 1px solid #e5e7eb; font-weight: 500;
+        }
+        .green { background: #dcfce7; border-color: #22c55e; color: #166534; }
+        .blue { background: #dbeafe; border-color: #3b82f6; color: #1e40af; }
         
-        .achievements-box { background: rgba(255,255,255,0.5); padding: 30px; border-radius: 30px; margin-top: 20px; }
-        .goal-item { background: white; padding: 15px; margin: 10px 0; border-radius: 20px; text-align: center; font-weight: 600; }
+        .achievements-box { background: #f9fafb; padding: 30px; border-radius: 30px; margin-top: 30px; }
+        .goal-item { background: white; padding: 18px; margin: 10px 0; border-radius: 20px; border: 1px solid #e5e7eb; }
     </style>
 </head>
 <body>
 
 <div class="sidebar">
-    <div class="icon">🏠</div>
-    <div class="icon">📈</div>
-    <div class="icon">🏆</div>
+    <a href="#home" class="icon">🏠</a>
+    <a href="#progress" class="icon">📈</a>
+    <a href="#achievements" class="icon">🏆</a>
 </div>
 
-<div class="main-content">
-    <h1>Personal Roadmap (24 - 30)</h1>
+<div class="main-content" id="home">
+    <h1>Personal Roadmap 24 - 30</h1>
     
     <div class="bubble green"><strong>SEKARANG: 24</strong><br>IM HERE</div>
     <div class="bubble blue"><strong>2026-2027</strong><br>Fasih Inggris C1-C2</div>
     <div class="bubble"><strong>2028</strong><br>Fasih Mandarin HSK 5</div>
 
-    <div class="achievements-box">
+    <div class="achievements-box" id="achievements">
         <h3>🎯 Achievements at 29 / 30</h3>
         <div class="goal-item">Sarjana Komputer</div>
         <div class="goal-item">Fasih Inggris & Mandarin</div>
