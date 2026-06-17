@@ -2,79 +2,110 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Roadmap | Executive Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <title>Executive Roadmap Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #f0f2f5; --card: #ffffff; --primary: #4f46e5; --accent: #8b5cf6; }
-        
-        body { font-family: 'Inter', sans-serif; background: var(--bg); margin: 0; padding: 60px; color: #1e293b; }
-        
-        .container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 80px 1fr 320px; gap: 40px; }
-        
-        /* Sidebar Professional */
-        .nav { display: flex; flex-direction: column; gap: 20px; }
-        .nav-btn { background: var(--card); height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: 1px solid rgba(0,0,0,0.05); }
+        :root {
+            --bg: #f8f9fc;
+            --panel: #ffffff;
+            --primary: #6366f1;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --radius: 24px;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg); 
+            margin: 0; 
+            padding: 40px; 
+            color: #1e293b; 
+        }
+
+        .grid-layout { 
+            display: grid; 
+            grid-template-columns: 90px 1fr 340px; 
+            gap: 30px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+
+        /* Sidebar - Elegant Vertical */
+        .sidebar { display: flex; flex-direction: column; gap: 20px; }
+        .nav-btn { 
+            height: 90px; background: var(--panel); border-radius: var(--radius);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: var(--shadow); cursor: pointer; transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
         .nav-btn:hover { background: var(--primary); color: white; transform: scale(1.05); }
 
-        /* Dashboard Utama */
-        .main { background: var(--card); padding: 50px; border-radius: 40px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05); }
-        h1 { font-size: 32px; font-weight: 800; letter-spacing: -1px; margin-bottom: 50px; }
+        /* Main Dashboard Panel */
+        .dashboard { background: var(--panel); padding: 50px; border-radius: 40px; box-shadow: var(--shadow); }
+        h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.05em; margin-bottom: 50px; }
 
-        .bubbles { display: flex; justify-content: space-around; margin-bottom: 60px; }
-        .bubble-core { width: 170px; height: 170px; border-radius: 50%; border: 1px solid #e2e8f0; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s ease; position: relative; }
-        .bubble-core:hover { transform: translateY(-10px); box-shadow: 0 20px 30px rgba(0,0,0,0.1); }
-        
-        /* Timeline Bar (Modernized) */
-        .timeline-track { display: grid; grid-template-columns: repeat(5, 1fr); background: #f8fafc; border-radius: 16px; padding: 20px; text-align: center; font-weight: 700; color: #64748b; font-size: 13px; }
+        /* Bubble Group - High Fidelity */
+        .bubbles { display: flex; justify-content: space-between; margin-bottom: 70px; }
+        .bubble { 
+            width: 190px; height: 190px; border-radius: 50%; border: 1px solid #e2e8f0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-weight: 700; text-align: center; position: relative; transition: 0.5s;
+        }
+        .bubble-tag { 
+            font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;
+            padding: 6px 12px; background: rgba(255,255,255,0.7); border-radius: 20px; margin-top: 12px;
+        }
 
-        /* Milestone Bar */
-        .milestone-track { margin-top: 40px; }
-        .m-bar { height: 45px; background: #fffbeb; border-left: 4px solid #f59e0b; margin: 15px 0; border-radius: 0 12px 12px 0; display: flex; align-items: center; padding-left: 20px; font-weight: 600; font-size: 14px; }
+        /* Timeline & Milestone - Professional Layout */
+        .milestone-wrapper { margin-top: 40px; display: flex; flex-direction: column; gap: 15px; }
+        .m-bar { 
+            height: 55px; background: #fffbeb; border-left: 6px solid #f59e0b; 
+            display: flex; align-items: center; padding-left: 30px; 
+            border-radius: 0 16px 16px 0; font-weight: 600; letter-spacing: 0.5px;
+        }
 
         /* Achievement Panel */
-        .ach-panel { background: var(--card); padding: 30px; border-radius: 30px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
-        .ach-list { list-style: none; padding: 0; }
-        .ach-list li { padding: 18px 0; border-bottom: 1px solid #f1f5f9; font-weight: 500; color: #475569; }
-        .finish-btn { background: #10b981; color: white; padding: 20px; border-radius: 16px; text-align: center; font-weight: 700; margin-top: 30px; cursor: pointer; }
+        .ach-panel { background: var(--panel); padding: 40px; border-radius: 30px; box-shadow: var(--shadow); }
+        .ach-list { list-style: none; padding: 0; margin: 30px 0; }
+        .ach-list li { padding: 20px 0; border-bottom: 1px solid #f1f5f9; font-weight: 500; }
+        .btn-finish { 
+            background: #22c55e; color: white; padding: 22px; text-align: center; 
+            border-radius: 16px; font-weight: 800; cursor: pointer; transition: 0.3s;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="nav">
+<div class="grid-layout">
+    <div class="sidebar">
         <div class="nav-btn">🏠</div>
         <div class="nav-btn">📈</div>
-        <div class="nav-btn">🏁</div>
+        <div class="nav-btn">🏆</div>
     </div>
 
-    <main class="main">
+    <main class="dashboard">
         <h1>Personal Roadmap 24 - 30</h1>
+        
         <div class="bubbles">
-            <div class="bubble-core" style="background: #ecfdf5;">IM HERE<br><strong>24</strong></div>
-            <div class="bubble-core" style="background: #fef2f2;">FASIH INGGRIS<br><strong>C1-C2</strong></div>
-            <div class="bubble-core" style="background: #eff6ff;">FASIH MANDARIN<br><strong>HSK 5</strong></div>
+            <div class="bubble" style="background: #dcfce7;">IM HERE<br><span style="font-size: 1.5rem;">24</span></div>
+            <div class="bubble" style="background: #fee2e2;">FASIH INGGRIS<br>C1-C2<div class="bubble-tag">Processing</div></div>
+            <div class="bubble" style="background: #dbeafe;">FASIH MANDARIN<br>HSK 5<div class="bubble-tag">Coming Soon</div></div>
         </div>
 
-        <div class="timeline-track">
-            <div>2026</div><div>2027</div><div>2028</div><div>2029</div><div>2030</div>
-        </div>
-
-        <div class="milestone-track">
-            <div class="m-bar" style="width: 70%;">ARMENIA DONE</div>
-            <div class="m-bar" style="width: 80%; margin-left: 40px;">WHV AUSSIE</div>
-            <div class="m-bar" style="width: 90%; margin-left: 80px;">S.KOM / S1</div>
+        <div class="milestone-wrapper">
+            <div class="m-bar" style="width: 75%;">ARMENIA DONE</div>
+            <div class="m-bar" style="width: 85%; margin-left: 50px;">WHV AUSSIE</div>
+            <div class="m-bar" style="width: 95%; margin-left: 100px;">S.KOM / S1</div>
         </div>
     </main>
 
     <aside class="ach-panel">
-        <h3>ACHIEVEMENTS</h3>
+        <h3 style="font-size: 1.2rem;">ACHIEVEMENTS</h3>
         <ul class="ach-list">
             <li>Sarjana Komputer</li>
             <li>Fasih Inggris & Mandarin</li>
             <li>Pengalaman Internasional</li>
             <li>Paspor Bagus & Bersih</li>
         </ul>
-        <div class="finish-btn">FINISH</div>
+        <div class="btn-finish">FINISH</div>
     </aside>
 </div>
 
